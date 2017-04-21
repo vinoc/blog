@@ -1,0 +1,27 @@
+Cette espace membre est prêt à l'emploi pour n'importe ou.
+
+Pour le configurer, il faut:
+
+Ouvrir et modifier le fichier "localisationfichier.php"
+
+
+Pour la BDD, il faut modifier les premiere lignes du fichier actions/fonctions.php pour mettre le nom, et mdp de de la BDD. 
+La table doit s'appeler "espacemembre". (ou modifier dans plusieurs fichiers)....
+
+Rajouter :
+au début de toutes les nouvelles pages, AVANT le doctype ! :
+
+<?php session_start();
+require ('localisationfonction.php');
+require (FONCTION_PATH.'fonctions.php');
+"
+
+Page ou on souhaite être connecté( avant ou après le doctype, mais a début du fichier tout de même par sécurité)
+
+"
+if(!estConnecte())
+{
+    redirection('connexion.php');
+}
+?>
+"
