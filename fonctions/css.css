@@ -1,3 +1,17 @@
 body{
     padding-top: 150px;
 }
+
+table, table tr, table td, table th{
+    border: 1px black solid;
+    border-collapse: collapse;
+}
+
+#liste-articles th{
+    width: 500px;
+
+}
+
+#liste-articles td {
+    height: 50px;
+}

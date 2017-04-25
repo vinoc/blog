@@ -19,43 +19,13 @@ class MembreManager
         return new Membre($q->fetch());
     }
 
-    public function connectionMembre($login, $motDePasse): bool
-    {
-        $q = $this->bdd->prepare('SELECT * FROM espacemembres WHERE id= ?');
-        $q->execute([$login]);
-        $q->closeCursor();
-        $donnees = $q->fetch();
 
-        if ($donnees == false)
+
+        public function updateMembre_PassTemp($id, $pass_temp):bool
         {
-            $_SESSION['erreurs']['login'] = 'Login incorrect';
-            return false;
-        }
-
-        if (password_verify($motDePasse,$donnees['pass'])== false)
-        {
-            $_SESSION['erreurs']['motdepasse'] = 'Mot de passe incorrect';
-            return false;
-        }
-
-        $_SESSION['membreId'] = $donnees['id'];
-        $pass_temp = uniqid('', true);
-        setcookie('id', $pass_temp ,time()+30+24+3600, '/', $_SERVER['HTTP_HOST'], false, true);
-        $changementPassetemp= $this->updateMembre($donnees['id'], $pass_temp);
-        if($changementPassetemp == false)
-        {
-            $_SESSION['erreurs']['erreur']= 'Une erreur est survenu, veuillez recommencer';
-        }
-        return true;
-
-    }
-
-        public function updateMembre($id, $pass_temp):bool
-        {
-            $req = $bdd->prepare('UPDATE espacemembres SET pass_temp = :pass_temp WHERE id = :id ');
-            $req->execute(compact('pass_temp','id'));
-
-            return $req;
+            $req = $this->bdd->prepare('UPDATE espacemembres SET pass_temp = :pass_temp WHERE id = :id ');
+           $reussi= ($req->execute(compact('pass_temp','id'))) ? true : false ;
+           return $reussi;
         }
 
 

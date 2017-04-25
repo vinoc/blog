@@ -12,13 +12,12 @@ class GestionArticles
 
     public function listeArticles()
     {
-        $donnees = [];
+        $toutLesArticles = [];
         $q = $this->bdd->query('SELECT id, titre FROM articles');
-        while ($q->fetch()) {
-            $donnees[] = $q;
-
+        while ($ligneParLigne = $q->fetch(PDO::FETCH_ASSOC)) {
+        $toutLesArticles[] = $ligneParLigne;
         }
-        return $donnees;
+        return $toutLesArticles;
     }
 
     public function articleEnCours($idArticle)

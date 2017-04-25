@@ -40,11 +40,32 @@ function redirection($destination)
 
 function connexion($login,$motDePasse)
 {
+    $bdd = bdd();
+    $q = $bdd->prepare('SELECT id, login, pass FROM espacemembres WHERE login= ?');
+    $q->execute([$login]);
+    $donnees = $q->fetch();
+    $q->closeCursor();
 
-    $connexion= new MembreManager(bdd());
-    var_dump($connexion->connectionMembre($login, $motDePasse));
-    die();
-   // ($connexion->connectionMembre($login,$motDePasse)) ? redirection('index.php') : '' ;
+    if ($donnees == false)
+    {
+        $_SESSION['erreurs']['login'] = 'Login incorrect';
+        redirection('connexion.php');
+    }
+
+    if (password_verify($motDePasse,$donnees['pass'])== false)
+    {
+        $_SESSION['erreurs']['motdepasse'] = 'Mot de passe incorrect';
+        redirection('connexion.php');
+    }
+
+    $_SESSION['membreId'] = $donnees['id'];
+    $pass_temp = uniqid('', true);
+    setcookie('id', $pass_temp ,time()+30+24+3600, '/', $_SERVER['HTTP_HOST'], false, true);
+    $updatePasseTemps = new MembreManager(bdd());
+
+    $updatePasseTemps->updateMembre_PassTemp($donnees['id'], $pass_temp);
+
+    redirection('index.php');
 }
 
 function estConnecte()
