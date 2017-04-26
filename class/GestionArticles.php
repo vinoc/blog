@@ -22,11 +22,17 @@ class GestionArticles
 
     public function articleEnCours($idArticle)
     {
+        $donnees=[];
         $idArticle = (int)$idArticle;
         $q = $this->bdd->prepare('SELECT * FROM articles WHERE id= ?');
         $q->execute([$idArticle]);
+        while ($article = $q->fetch(PDO::FETCH_ASSOC))
+        {
+            $donnees = $article;
+        }
+
         $q->closeCursor();
-        return $q->fetch();
+        return $donnees ;
     }
 
     public function NouveauArticle($titre, $contenu, $membre): bool

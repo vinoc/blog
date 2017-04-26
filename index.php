@@ -1,13 +1,13 @@
 <?php
+session_start();
 require ('localisationfonction.php');
+require (FONCTION_PATH.'fonctions.php');
+require (PARTIAL_PATH.'estConnecte.php');
+
+
+
 require (RACINE_SRV.'/menu_header.php');
 
-if (estConnecte()== false)
-{redirection('connexion.php');}
-else
-{
-    $membreConnecte = newMembre($_SESSION['membreId']);
-}
 ?>
 
 <section class="container">

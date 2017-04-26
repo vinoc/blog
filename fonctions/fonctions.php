@@ -77,7 +77,7 @@ function estConnecte()
     }
 
     if (isset($_COOKIE['id'])) {
-        $verifieOccurence = $bdd->prepare('SELECT id FROM espacemembre WHERE pass_temp= ?');
+        $verifieOccurence = $bdd->prepare('SELECT id FROM espacemembres WHERE pass_temp= ?');
         $verifieOccurence->execute([$_COOKIE['id']]);
         $valideConnexion = $verifieOccurence->fetch();
         if (is_null($valideConnexion)) {
@@ -112,13 +112,29 @@ function newMembre($id)
 
     $q = $bdd->prepare('SELECT id, login, status FROM espacemembres WHERE id = ?');
     $q->execute([$id]);
-    echo $id.'<br />';
+
 
     $donnees = $q->fetch();
     if($donnees == false){
         return false;
     }
     return new membre($donnees);
+}
+
+function nomAuteur($id)
+{
+    $bdd= bdd();
+    $id = (int)$id;
+
+    $q = $bdd->prepare('SELECT id, login, status FROM espacemembres WHERE id = ?');
+    $q->execute([$id]);
+
+
+    $donnees = $q->fetch();
+    if($donnees == false){
+        return '';
+    }
+    return $donnees['login'];
 }
 
 

@@ -1,16 +1,23 @@
 <?php
-session_start();
-require (FONCTION_PATH.'fonctions.php');
 
 ini_set('display_errors', 1);
 
+
+$titrePage= (isset($titrePage)) ? $titrePage : 'Blog de l\'ecrivain ' ;
+if (isset($membreConnecte)) {
+    $visibilite = ($membreConnecte->estAdmin() OR $membreConnecte->estAuteur()) ? 'visible' : 'cache';
+}
+else
+{
+    $visibilite = 'hidden';
+}
 ?>
 
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Connexion</title>
+    <title><?php echo $titrePage; ?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet"  type="text/css" href="http://cheezpa.com/asset/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href= "<?php echo FONCTION_URL ?>css.css" />
@@ -19,12 +26,13 @@ ini_set('display_errors', 1);
 <body>
 <header>
     <div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-header"><a class="navbar-brand" href="<?php echo $host; ?>" >Bienvenue sur cheezpa.com</a></div>
+    <div class="navbar-header"><a class="navbar-brand" href="<?php echo $host; ?>" >Blog de l'écrivain</a></div>
     <ul class="nav navbar-nav">
         <li><a href="<?php echo $host; ?>/connexion.php">Connexion</a></li>
         <li><a href="<?php echo HOST; ?>/actions/lanceLaDeconnexion.php">Deconnexion</a></li>
         <li><a href ="<?php echo $host; ?>/inscription.php">Inscription</a></li>
         <li><a href="#">Articles</a></li>
+        <li class="<?php echo $visibilite; ?>"><a href="NouvelleArticle.php">Nouvelle article</a></li>
 
 
 
