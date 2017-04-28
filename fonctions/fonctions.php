@@ -34,7 +34,7 @@ function recupererErreur($nomDuChamp)
 
 function redirection($destination)
 {
-    header("location:".HOST."/$destination");
+    header("location:".HOST."$destination");
     die();
 }
 

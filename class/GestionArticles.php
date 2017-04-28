@@ -10,7 +10,7 @@ class GestionArticles
         $this->bdd = $bdd;
     }
 
-    public function listeArticles()
+    public function listerArticles()
     {
         $toutLesArticles = [];
         $q = $this->bdd->query('SELECT id, titre FROM articles');
@@ -20,19 +20,13 @@ class GestionArticles
         return $toutLesArticles;
     }
 
-    public function articleEnCours($idArticle)
+    public function recupererArticleParId(int $idArticle)
     {
-        $donnees=[];
-        $idArticle = (int)$idArticle;
         $q = $this->bdd->prepare('SELECT * FROM articles WHERE id= ?');
         $q->execute([$idArticle]);
-        while ($article = $q->fetch(PDO::FETCH_ASSOC))
-        {
-            $donnees = $article;
-        }
 
-        $q->closeCursor();
-        return $donnees ;
+        return new Article($q->fetch(PDO::FETCH_ASSOC));
+
     }
 
     public function NouveauArticle($titre, $contenu, $membre): bool

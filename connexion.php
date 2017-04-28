@@ -18,32 +18,33 @@ require (FONCTION_PATH.'fonctions.php');
 <body>
 <header>
     <?php
-    require(RACINE_SRV.'/menu_header.php');
+    require(RACINE_SRV.'/_header_menu.php');
     ?>
 </header>
-<h1>Connexion</h1>
-<?php
+<section class ="container">
+    <h1>Connexion</h1>
+    <?php
 
-if(estConnecte())
-{
-    echo 'Vous êtes déjà connecté';
-    die;
-}
-if (!empty($_SESSION['errors']['connexion'])){
-    echo $_SESSION['errors']['connexion'];
-    unset($_SESSION['errors']['connexion']);
-}
+    if(estConnecte())
+    {
+        echo 'Vous êtes déjà connecté';
+        die;
+    }
+    if (!empty($_SESSION['errors']['connexion'])){
+        echo $_SESSION['errors']['connexion'];
+        unset($_SESSION['errors']['connexion']);
+    }
 
-?>
-<form action="<?php echo HOST.'/actions/lanceLaConnexion.php' ?>" method="post" >
-    <label for="login" title="login">login:</label>
-    <input type="text" name="login" id="login" required/>
+    ?>
+    <form action="<?php echo HOST.'/actions/lanceLaConnexion.php' ?>" method="post" >
+        <label for="login" title="login">login:</label>
+        <input type="text" name="login" id="login" required/>
 
-    <label for="password" title="password">Mot de passe:</label>
-    <input type="text" name="password" id="password" required/>
+        <label for="password" title="password">Mot de passe:</label>
+        <input type="password   " name="password" id="password" required/>
 
-    <input type="submit" value="Connexion" />
-</form>
-
+        <input type="submit" value="Connexion" />
+    </form>
+</section>
 </body>
 </html>

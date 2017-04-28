@@ -6,33 +6,26 @@ require (PARTIAL_PATH.'estConnecte.php');
 
 
 
-require (RACINE_SRV.'/menu_header.php');
 
-?>
 
-<section class="container">
-<?php
 $bdd= bdd();
 $ListeArticles = new GestionArticles($bdd);
 
-$listes = $ListeArticles->listeArticles();
-?>
-    <table id="liste-articles">
-        <tr>
-            <th>Titre</th>
-        </tr>
-        <?php
-        foreach ($listes as $contenu)
-        {
-            ?>
-        <tr>
-            <td><a href="article.php?id=<?php echo $contenu['id']; ?>"> <?php echo $contenu['titre']; ?> </a></td>
-        </tr>
-        <?php
-        }
-        ?>
-    </table>
+$listes = $ListeArticles->listerArticles();
 
-</section>
-</body>
-</html>
+$titrePage= (isset($titrePage)) ? $titrePage : 'Blog de l\'ecrivain ' ;
+
+if (isset($membreConnecte)) {
+    $visibilite = ($membreConnecte->estAdmin() OR $membreConnecte->estAuteur()) ? 'visible' : 'cache';
+}
+else {
+    $visibilite = 'cache';
+}
+
+
+
+require (PARTIAL_PATH.'header_menu.php');
+require (PARTIAL_PATH.'_accueil.php')
+
+?>
+

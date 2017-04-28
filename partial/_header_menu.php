@@ -1,18 +1,3 @@
-<?php
-
-ini_set('display_errors', 1);
-
-
-$titrePage= (isset($titrePage)) ? $titrePage : 'Blog de l\'ecrivain ' ;
-if (isset($membreConnecte)) {
-    $visibilite = ($membreConnecte->estAdmin() OR $membreConnecte->estAuteur()) ? 'visible' : 'cache';
-}
-else
-{
-    $visibilite = 'hidden';
-}
-?>
-
 
 <!DOCTYPE html>
 <html>

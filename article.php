@@ -15,30 +15,17 @@ $idArticle=((int) $_GET['id'] == 0 ) ? '1' : $_GET['id'];
 
 $gestionArticles = new GestionArticles(bdd());
 
-$article = $gestionArticles->articleEnCours($idArticle);
+$article = $gestionArticles->recupererArticleParId($idArticle);
 
-$auteur = nomAuteur($article['idAuteur']);
+$auteur = nomAuteur($article->idAuteur());
 
-$titrePage= $article['titre'];
+$titrePage= $article->titre();
 
-require (RACINE_SRV.'/menu_header.php');
+require (PARTIAL_PATH.'header_menu.php');
+
+require (PARTIAL_PATH.'_article.php');
 ?>
 
-<section id="afficheArticle" class="container">
-    <h1 class="centre"><?php echo $article['titre']; ?></h1>
-
-    <article>
-    <div id="article"><?php echo $article['article']; ?> </div>
-
-    <div id="auteur" class="centre">L'auteur: <?php echo $auteur; ?> </div>
-    </article>
-
-</section>
-<section id="comentaire" class="container">
-    Commentaires
-
-
-</section>
 
 <footer></footer>
 </body>
