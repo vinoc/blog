@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +16,8 @@
         <li><a href="<?php echo HOST; ?>/actions/lanceLaDeconnexion.php">Deconnexion</a></li>
         <li><a href ="<?php echo $host; ?>/inscription.php">Inscription</a></li>
         <li><a href="#">Articles</a></li>
-        <li class="<?php echo $visibilite; ?>"><a href="NouvelleArticle.php">Nouvelle article</a></li>
+        <li class="<?php echo $visibiliteNouveauArticle; ?>"><a href="NouvelleArticle.php">Nouvelle article</a></li>
+        <li class="<?php echo $visibiliteAdmin ; ?>"><a href="administrerArticles.php">Administrer articles</a> </li>
 
 
 

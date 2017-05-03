@@ -15,17 +15,11 @@ $listes = $ListeArticles->listerArticles();
 
 $titrePage= (isset($titrePage)) ? $titrePage : 'Blog de l\'ecrivain ' ;
 
-if (isset($membreConnecte)) {
-    $visibilite = ($membreConnecte->estAdmin() OR $membreConnecte->estAuteur()) ? 'visible' : 'cache';
-}
-else {
-    $visibilite = 'cache';
-}
-
-
+$erreur=  recupererErreur('droit');
 
 require (PARTIAL_PATH.'header_menu.php');
-require (PARTIAL_PATH.'_accueil.php')
+require (PARTIAL_PATH.'_accueil.php');
+require (PARTIAL_PATH.'_footer.php');
 
 ?>
 

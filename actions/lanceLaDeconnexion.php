@@ -12,7 +12,7 @@ $req = $bdd->prepare('UPDATE espacemembres SET pass_temp = ? WHERE pass_temp = ?
 $req->execute(['',$cookieId,]);
 
 //On fait expirer le cookie, et on change l'id de session. plus aucune trace :)
-setcookie('id', '1', time() +1 , '/', $_SERVER['HTTP_HOST'], false, true);
+setcookie('id', '1', time() -10 , '/', $_SERVER['HTTP_HOST'], false, true);
 
 //On efface la session en cours
 if (ini_get("session.use_cookies")) {

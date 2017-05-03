@@ -29,15 +29,15 @@ class GestionArticles
 
     }
 
-    public function NouveauArticle($titre, $contenu, $membre): bool
+    public function NouveauArticle($nouveauArticle, $membre): bool
     {
-        $membre = new Membre($membre);
+
         if ($membre->estAdmin() OR $membre->estAuteur())
         {
             $q = $this->bdd->prepare('INSERT INTO articles (titre, article, idAuteur) VALUE (:titre, :article, :idAuteur)');
 
-            $q->bindValue(':titre', $titre, PDO::PARAM_STR);
-            $q->bindValue(':article', $contenu, PDO::PARAM_STR);
+            $q->bindValue(':titre', $nouveauArticle['titre'], PDO::PARAM_STR);
+            $q->bindValue(':article', $nouveauArticle['contenu'], PDO::PARAM_STR);
             $q->bindValue(':idAuteur', $membre->id(), PDO::PARAM_INT);
 
             return $q->execute();
@@ -48,7 +48,11 @@ class GestionArticles
     }
 
 
-
+    public function supprimerArticle($idArticle)
+    {
+        $q = $this->bdd->prepare('DELETE FROM articles WHERE id = ?');
+        return $q->execute([$idArticle]);
+    }
 
 
 

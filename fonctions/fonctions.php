@@ -26,7 +26,7 @@ function recupererErreur($nomDuChamp)
     }
 
     $error=  $_SESSION['errors'][$nomDuChamp];
-    //unset($_SESSION['errors'][$nomDuChamp]);
+    unset($_SESSION['errors'][$nomDuChamp]);
     return $error;
 }
 

@@ -18,7 +18,7 @@ require (FONCTION_PATH.'fonctions.php');
 <body>
 <header>
     <?php
-    require(RACINE_SRV.'/_header_menu.php');
+    include(PARTIAL_PATH.'/header_menu.php');
     ?>
 </header>
 <section class ="container">
@@ -41,7 +41,7 @@ require (FONCTION_PATH.'fonctions.php');
         <input type="text" name="login" id="login" required/>
 
         <label for="password" title="password">Mot de passe:</label>
-        <input type="password   " name="password" id="password" required/>
+        <input type="password" name="password" id="password" required/>
 
         <input type="submit" value="Connexion" />
     </form>

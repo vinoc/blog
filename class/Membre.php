@@ -11,9 +11,9 @@ class Membre
 	private $_status;
 
 	   //session['status']=
-    const ADMIN = 1;
-    const AUTEUR = 2;
-    const MEMBRE = 3;
+    const ADMIN = 'admin';
+    const AUTEUR = 'auteur';
+    const MEMBRE = 'membre';
 
 
 
@@ -43,10 +43,25 @@ class Membre
 
     public function setStatus($status)
     {
-        $status = (int)$status;
-        if ($status <= 3 AND $status >= 1) {
-            $this->_status = $status;
-        }
+        $status = is_string($status);
+
+           switch ($status) {
+               case 'admin':
+                    $this->_status = self::ADMIN;
+                    break;
+
+                case 'auteur':
+                    $this->_status = self::AUTEUR;
+                    break;
+                case 'membre':
+                    $this->_status = self::MEMBRE;
+                    break;
+                default:
+                    $this->_status = self::MEMBRE;
+
+
+            }
+
     }
 
 

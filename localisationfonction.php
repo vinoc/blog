@@ -12,6 +12,7 @@ $fonction_URL= $host.'fonctions/';
 //Vers le dossier class
 $partial_path= $racine_srv.'partial/';
 
+$action_url = $host.'actions/';
 
 // constante:
 define("HOST", $host );
@@ -19,6 +20,6 @@ define("RACINE_SRV", $racine_srv );
 define("FONCTION_PATH", $fonction_path );
 define("FONCTION_URL", $fonction_URL );
 define("PARTIAL_PATH", $partial_path );
-
+define("ACTIONS_URL", $action_url);
 
 ?>

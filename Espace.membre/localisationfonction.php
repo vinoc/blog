@@ -11,7 +11,7 @@ $fonction_URL= $host.'/actions/';
 
 // constante:
 define("HOST", $host );
-define("RACINSRV", $racinesrv );
+define("RACINE_SRV", $racinesrv );
 define("FONCTION_PATH", $fonction_path );
 define("FONCTION_URL", $fonction_URL );
 

@@ -3,10 +3,18 @@
 $titrePage= (isset($titrePage)) ? $titrePage : 'Blog de l\'ecrivain ' ;
 
 if (isset($membreConnecte)) {
-    $visibilite = ($membreConnecte->estAdmin() OR $membreConnecte->estAuteur()) ? 'visible' : 'cache';
+    $visibiliteNouveauArticle = ($membreConnecte->estAdmin() OR $membreConnecte->estAuteur()) ? 'visible' : 'cache';
 }
 else {
-    $visibilite = 'cache';
+    $visibiliteNouveauArticle = 'cache';
 }
 
-require (PARTIAL_PATH.'_header_menu.php');
+if (isset($membreConnecte)) {
+$visibiliteAdmin = ($membreConnecte->estAdmin()) ? 'visible' : 'cache';
+}
+else {
+    $visibiliteAdmin = 'cache';
+}
+include(PARTIAL_PATH.'_header_menu.php');
+
+?>

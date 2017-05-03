@@ -18,7 +18,7 @@ require ('localisationfonction.php');
 <body>
 <header>
 <?php
-require(RACINSRV.'/menu_header.php');
+require(RACINE_SRV.'/menu_header.php');
 ?>
 </header>
 <section class="container">
