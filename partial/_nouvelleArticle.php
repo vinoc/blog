@@ -1,5 +1,5 @@
 <section class="container">
-    <form action="actions/enregistreArticle.php" method="post">
+    <form action="<?php echo ACTIONS_URL; ?>enregistreArticle.php" method="post">
         <label for ="titre">Titre de l'article</label>
         <input type="text" name="nouveauArticle[titre]" id="titre" />
 

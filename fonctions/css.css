@@ -38,3 +38,8 @@ table, table tr, table td, table th{
 .cache{
     visibility: hidden;
 }
+
+#comentaire{
+    padding-top: 50px;
+    width: 200px;
+}

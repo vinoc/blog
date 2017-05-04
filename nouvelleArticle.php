@@ -15,6 +15,8 @@ $titrePage = 'Ajout d\'un nouvelle Article';
 
 require (PARTIAL_PATH.'header_menu.php');
 
+
+
 $auteurId = $membreConnecte->id();
 
 require (PARTIAL_PATH.'_nouvelleArticle.php')

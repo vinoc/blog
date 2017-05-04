@@ -9,7 +9,14 @@
 
 </section>
 <section id="comentaire" class="container">
-    Commentaires
+    <form action ="<?php echo ACTIONS_URL;?>ajouteUnNouveauCommentaire.php" method="post" >
+        <input type="text" name="commentaire[commentaire]" id="commentaire[contenu]" />
+
+        <input type="number" name="commentaire[idArticle]" id="commentaire[idArticle]" value="<?php echo $article->id(); ?>" hidden />
+        <input type="number" name="commentaire[idAuteur]" id="commentaire[idAuteur]" value="<?php echo $membreConnecte->id() ; ?>" hidden  />
+
+        <input type="submit" value="Envoyer votre commentaire" />
+    </form>
 
 
 </section>
