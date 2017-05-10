@@ -9,5 +9,7 @@ $commentaire = new Commentaire($_POST['commentaire']);
 
 $gestionCommentaire = new GestionCommentaires(bdd());
 
-var_dump($gestionCommentaire->EnregistrerNouveauCommentaire($commentaire));
+$gestionCommentaire->EnregistrerNouveauCommentaire($commentaire);
+
+redirection("article.php?id=".$commentaire->idArticle());
 

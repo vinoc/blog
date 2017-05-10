@@ -16,9 +16,17 @@ $auteur = nomAuteur($article->idAuteur());
 
 $titrePage= $article->titre();
 
-require (PARTIAL_PATH.'header_menu.php');
 
-require (PARTIAL_PATH.'_article.php');
+$listeCommentaires = new GestionCommentaires(bdd());
 
-require (PARTIAL_PATH.'_footer.php');
+$commentaires = $listeCommentaires->listerCommentairesParArticle($idArticle);
+
+//$commentaires a trier dans l'ordre avec les sous commentaire juste après leurs parents !
+
+
+require PARTIAL_PATH.'header_menu.php';
+
+require PARTIAL_PATH.'_article.php';
+
+require PARTIAL_PATH.'_footer.php';
 ?>

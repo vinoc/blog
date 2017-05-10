@@ -60,7 +60,7 @@ function connexion($login,$motDePasse)
 
     $_SESSION['membreId'] = $donnees['id'];
     $pass_temp = uniqid('', true);
-    setcookie('id', $pass_temp ,time()+30+24+3600, '/', $_SERVER['HTTP_HOST'], false, true);
+    setcookie('id', $pass_temp ,time()+30*24*3600, '/', $_SERVER['HTTP_HOST'], false, true);
     $updatePasseTemps = new MembreManager(bdd());
 
     $updatePasseTemps->updateMembre_PassTemp($donnees['id'], $pass_temp);

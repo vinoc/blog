@@ -10,7 +10,7 @@
         {
             ?>
             <tr>
-                <td><a href="<?php echo $host; ?>/article.php?id=<?php echo $contenu['id']; ?>"> <?php echo $contenu['titre']; ?> </a></td>
+                <td><a href="<?php echo $host; ?>article.php?id=<?php echo $contenu['id']; ?>"> <?php echo $contenu['titre']; ?> </a></td>
             </tr>
             <?php
         }

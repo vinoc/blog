@@ -8,7 +8,39 @@
 </article>
 
 </section>
-<section id="comentaire" class="container">
+
+
+
+
+<section class="container" id="commentaire">
+<table>
+    <tr><th>commentaire</th></tr>
+
+        <?php
+
+        foreach ($commentaires as $contenu)
+        {
+            ?>
+    <tr>
+
+        <td>
+            <?php echo $contenu->commentaire(); ?>
+        </td>
+    </tr>
+<?php
+        }
+        ?>
+
+</table>
+
+
+
+</section>
+
+
+
+
+<section id="formulaireCommentaire" class="container">
     <form action ="<?php echo ACTIONS_URL;?>ajouteUnNouveauCommentaire.php" method="post" >
         <input type="text" name="commentaire[commentaire]" id="commentaire[contenu]" />
 
@@ -20,3 +52,9 @@
 
 
 </section>
+
+
+
+
+
+
