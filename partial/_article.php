@@ -13,28 +13,40 @@
 
 
 <section class="container" id="commentaire">
-<table>
-    <tr><th>commentaire</th></tr>
-
-        <?php
-
-        foreach ($commentaires as $contenu)
-        {
-            ?>
-    <tr>
-
-        <td>
-            <?php echo $contenu->commentaire(); ?>
-        </td>
-    </tr>
+<!--<table>-->
+<!--    <tr><th>commentaire</th></tr>-->
+<!---->
+<!--        --><?php
+//
+//        foreach ($commentaires as $contenu)
+//        {
+//            ?>
+<!--    <tr class="--><?php //echo $contenu->status(); ?><!--">-->
+<!---->
+<!--        <td>-->
+<!--            --><?php //echo $contenu->commentaire(); ?>
+<!--        </td>-->
+<!--        <td>-->
+<!--            --><?php //echo $contenu->date(); ?>
+<!--        </td>-->
+<!--        <td>-->
+<!--            status: --><?php //echo $contenu->status(); ?>
+<!--        </td>-->
+<!---->
+<!--    </tr>-->
 <?php
-        }
-        ?>
+//        }
+//        ?>
+<!---->
+<!--</table>-->
 
-</table>
+    <ul>
+        <?php foreach ($commentaires as $commentaire) : ?>
+            <?php  afficher_commentaire($commentaire)?>
+        <?php endforeach; ?>
 
-
-
+<!--      modifier un input en js:   query selector-->
+    </ul>
 </section>
 
 
@@ -46,6 +58,7 @@
 
         <input type="number" name="commentaire[idArticle]" id="commentaire[idArticle]" value="<?php echo $article->id(); ?>" hidden />
         <input type="number" name="commentaire[idAuteur]" id="commentaire[idAuteur]" value="<?php echo $membreConnecte->id() ; ?>" hidden  />
+        <input type="number" name="idParent" id="idParent" value="" />
 
         <input type="submit" value="Envoyer votre commentaire" />
     </form>

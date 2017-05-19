@@ -6,6 +6,9 @@
     <link rel="stylesheet"  type="text/css" href="http://cheezpa.com/asset/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href= "<?php echo FONCTION_URL ?>css.css" />
     <link rel="icon" href="http://cheezpa.com/cheezpafavico.jpg" />
+<!--Pour permetre de changer le contenu d'un input dans la page commentaire-->
+    <link rel="stylesheet" href="https://get.mavo.io/mavo.css"/>
+    <script src="https://get.mavo.io/mavo.js"></script>
 </head>
 <body>
 <header>
@@ -18,6 +21,7 @@
         <li><a href="<?php echo HOST; ?>index.php">Articles</a></li>
         <li class="<?php echo $visibiliteNouveauArticle; ?>"><a href="<?php echo HOST; ?>NouvelleArticle.php">Nouvelle article</a></li>
         <li class="<?php echo $visibiliteAdmin ; ?>"><a href="<?php echo HOST; ?>administrerArticles.php">Administrer articles</a> </li>
+        <li><a href="<?php echo HOST ; ?>envoiMail.php">Envoi mails</a> </li>
 
 
 
