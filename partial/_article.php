@@ -13,32 +13,6 @@
 
 
 <section class="container" id="commentaire">
-<!--<table>-->
-<!--    <tr><th>commentaire</th></tr>-->
-<!---->
-<!--        --><?php
-//
-//        foreach ($commentaires as $contenu)
-//        {
-//            ?>
-<!--    <tr class="--><?php //echo $contenu->status(); ?><!--">-->
-<!---->
-<!--        <td>-->
-<!--            --><?php //echo $contenu->commentaire(); ?>
-<!--        </td>-->
-<!--        <td>-->
-<!--            --><?php //echo $contenu->date(); ?>
-<!--        </td>-->
-<!--        <td>-->
-<!--            status: --><?php //echo $contenu->status(); ?>
-<!--        </td>-->
-<!---->
-<!--    </tr>-->
-<?php
-//        }
-//        ?>
-<!---->
-<!--</table>-->
 
     <ul>
         <?php foreach ($commentaires as $commentaire) : ?>
