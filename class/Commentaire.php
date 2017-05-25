@@ -36,17 +36,51 @@ class Commentaire
     }
 
 
-    public function idArticle(){    return $this->idArticle;}
-    public function id(){           return $this->id;}
-    public function commentaire(){  return htmlspecialchars($this->commentaire);}
-    public function idAuteur(){     return $this->idAuteur; }
-    public function date(){         return $this->date;}
-    public function idParent(){     return $this->idParent;}
-    public function status(){       return $this->status;}
+
+//--------------- getteurs---------------------
+
+
+
+    public function idArticle()
+    {
+        return $this->idArticle;
+    }
+    public function id()
+    {
+        return $this->id;
+    }
+    public function commentaire()
+    {
+        return htmlspecialchars($this->commentaire);
+    }
+    public function idAuteur()
+    {
+        return $this->idAuteur;
+    }
+    public function date()
+    {
+        return $this->date;
+    }
+    public function idParent()
+    {
+        return $this->idParent;
+    }
+    public function status()
+    {
+        return $this->status;
+    }
     public function enfants()
     {
         return $this->enfants;
     }
+
+
+
+//-------------------SETTEUR------------------
+
+
+
+
 
     public function setIdArticle($idArticle)
     {
