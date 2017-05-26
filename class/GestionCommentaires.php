@@ -22,24 +22,7 @@ class GestionCommentaires
         {
             $commentaires[]= $commentaire;
         }
-
-
-        $id = [];
-        $idParent=[];
-        // Obtient une liste de colonnes
-        foreach ($commentaires as $key => $row) {
-            $id[$key]  = $row['id'];
-            $idParent[$key] = $row['idParent'];
-        }
-
-        // Trie les données par volume décroissant, edition croissant
-        // Ajoute $data en tant que dernier paramètre, pour trier par la clé commune
-        array_multisort($id, SORT_DESC, $idParent, SORT_ASC, $commentaires);
-
-
-
-
-
+        $q->closeCursor();
         $tousLesCommentaires = [];
         foreach($commentaires as $value)
         {
@@ -62,26 +45,46 @@ class GestionCommentaires
 
     }
 
-    public function enfants()
+    public function enfants(int $idArticle)
     {
-        $q = $this->bdd->query('SELECT * FROM commentaires WHERE idArticle = ?');
-        $data = [];
+        $q = $this->bdd->prepare('SELECT * FROM commentaires WHERE idArticle = ?');
+        $q->execute([$idArticle]);
+        $commentaires = [];
         while ($commentaire = $q->fetch(PDO::FETCH_ASSOC)) {
-            $data[] = $commentaire;
+            $commentaires[] = new Commentaire($commentaire);
+        }
+        $parents = [];
+        foreach ($commentaires as $commentaire)
+        {
+            if($commentaire->idParent() == 0 )
+            {
+                $parents[] = $commentaire;
+            }
+
+            $commentaire->setEnfants(array_filter($commentaires, function($commentaireEnCours) use($commentaire){
+                return ($commentaire->id() == $commentaireEnCours->idParent())? true : false ;
+            }));
         }
 
-//Pour trier le tableau, essayer cette fonction:
+
+        return $parents;
 
 
-// Obtient une liste de colonnes
-        foreach ($data as $key => $row) {
-            $volume[$key] = $row['volume'];
-            $edition[$key] = $row['edition'];
+
+
+        //Pour chaque commentaire, on recherche les commentaires enfants.
+        foreach ($commentaires as $commentaire) {
+            $idCommentaire = $commentaire->id();
+
+            foreach ($commentaires as $value => $key) {
+                if (array_search($idCommentaire, $value['idParent'], true)) {
+                    $commentaire['enfant'] = $value['id'];
+                }
+            }
         }
+        var_dump($commentaires);
+        die();
 
-// Trie les données par volume décroissant, edition croissant
-// Ajoute $data en tant que dernier paramètre, pour trier par la clé commune
-        array_multisort($volume, SORT_DESC, $edition, SORT_ASC, $data);
 
     }
 }

@@ -28,8 +28,7 @@ class Commentaire
             else{
                 $this->setIdParent('0');
             }
-            $this->setEnfants();
-
+            $this->setEnfants([]);
 
         }
 
@@ -128,9 +127,10 @@ class Commentaire
         $this->status = $status;
     }
 
-    public function setEnfants()
+    public function setEnfants($enfants)
     {
-        $this->enfants = [];
+
+        $this->enfants = $enfants;
     }
 
 }
