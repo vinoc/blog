@@ -4,12 +4,7 @@ require ('localisationfonction.php');
 require (FONCTION_PATH.'fonctions.php');
 require (PARTIAL_PATH.'estConnecte.php');
 
-
-
-
-
-$bdd= bdd();
-$ListeArticles = new GestionArticles($bdd);
+$ListeArticles = new GestionArticles(bdd());
 
 $listes = $ListeArticles->listerArticles();
 

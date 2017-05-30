@@ -29,7 +29,7 @@ class GestionArticles
 
     }
 
-    public function NouveauArticle($nouveauArticle, $membre): bool
+    public function NouveauArticle($nouveauArticle, $membre)
     {
 
         if ($membre->estAdmin() OR $membre->estAuteur())

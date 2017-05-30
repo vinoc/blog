@@ -16,7 +16,6 @@ class GestionCommentaires
         $q-> execute([$idArticle]);
 
 
-        //Placer les articles dans un tableau, puis les trier par date et idParent
         $commentaires = [];
         while ($commentaire = $q->fetch(PDO::FETCH_ASSOC))
         {
@@ -27,12 +26,11 @@ class GestionCommentaires
         foreach($commentaires as $value)
         {
             $tousLesCommentaires[] = new Commentaire($value);
-            //$tousLesCommentaires[]=$commentaire;
         }
         return $tousLesCommentaires;
     }
 
-    public function EnregistrerNouveauCommentaire($donnees): bool
+    public function EnregistrerNouveauCommentaire($donnees)
     {
         $idArticle = (int) $donnees->idArticle();
         $idParent = $donnees->idParent();
@@ -61,30 +59,15 @@ class GestionCommentaires
                 $parents[] = $commentaire;
             }
 
-            $commentaire->setEnfants(array_filter($commentaires, function($commentaireEnCours) use($commentaire){
+            $commentaire->setEnfants(array_filter($commentaires, function($commentaireEnCours) use($commentaire)
+            {
                 return ($commentaire->id() == $commentaireEnCours->idParent())? true : false ;
-            }));
+            }
+            ));
         }
 
 
         return $parents;
-
-
-
-
-        //Pour chaque commentaire, on recherche les commentaires enfants.
-        foreach ($commentaires as $commentaire) {
-            $idCommentaire = $commentaire->id();
-
-            foreach ($commentaires as $value => $key) {
-                if (array_search($idCommentaire, $value['idParent'], true)) {
-                    $commentaire['enfant'] = $value['id'];
-                }
-            }
-        }
-        var_dump($commentaires);
-        die();
-
 
     }
 }

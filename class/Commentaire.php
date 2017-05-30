@@ -97,7 +97,7 @@ class Commentaire
         $this->commentaire = $commentaire;
     }
 
-    public function setIdAuteur($idAuteur)
+    public function setIdAuteur(int $idAuteur)
     {
         $this->idAuteur = $idAuteur;
     }
@@ -107,7 +107,7 @@ class Commentaire
         $this->date = (empty($date))? null : $date ;
     }
 
-    public function setIdParent( $idParent)
+    public function setIdParent(int $idParent)
     {
 
         if($idParent == 0)
@@ -127,7 +127,7 @@ class Commentaire
         $this->status = $status;
     }
 
-    public function setEnfants($enfants)
+    public function setEnfants(array $enfants)
     {
 
         $this->enfants = $enfants;

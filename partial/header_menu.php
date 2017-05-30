@@ -3,6 +3,8 @@
 $titrePage= (isset($titrePage)) ? $titrePage : 'Blog de l\'ecrivain ' ;
 
 if (isset($membreConnecte)) {
+    var_dump($membreConnecte->estAdmin());
+    die;
     $visibiliteNouveauArticle = ($membreConnecte->estAdmin() OR $membreConnecte->estAuteur()) ? 'visible' : 'cache';
 }
 else {
@@ -10,7 +12,7 @@ else {
 }
 
 if (isset($membreConnecte)) {
-$visibiliteAdmin = ($membreConnecte->estAdmin()) ? 'visible' : 'cache';
+    $visibiliteAdmin = ($membreConnecte->estAdmin()) ? 'visible' : 'cache';
 }
 else {
     $visibiliteAdmin = 'cache';

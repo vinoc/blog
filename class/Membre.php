@@ -66,17 +66,17 @@ class Membre
 
 
 //Status du membre
-    public function estAdmin(): bool
+    public function estAdmin()
     {
         return $this->status() == self::ADMIN ;
     }
 
-    public function estAuteur(): bool
+    public function estAuteur()
     {
         return $this->status() == self::AUTEUR ;
     }
 
-    public function estMembre(): bool
+    public function estMembre()
     {
         return $this->status() == self::MEMBRE;
     }
