@@ -2,7 +2,6 @@
 session_start();
 require ('localisationfonction.php');
 require (FONCTION_PATH.'fonctions.php');
-
 ?>
 
 

@@ -15,6 +15,5 @@ $erreur=  recupererErreur('droit');
 require (PARTIAL_PATH.'header_menu.php');
 require (PARTIAL_PATH.'_accueil.php');
 require (PARTIAL_PATH.'_footer.php');
-
 ?>
 

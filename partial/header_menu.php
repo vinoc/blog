@@ -3,8 +3,7 @@
 $titrePage= (isset($titrePage)) ? $titrePage : 'Blog de l\'ecrivain ' ;
 
 if (isset($membreConnecte)) {
-    var_dump($membreConnecte->estAdmin());
-    die;
+
     $visibiliteNouveauArticle = ($membreConnecte->estAdmin() OR $membreConnecte->estAuteur()) ? 'visible' : 'cache';
 }
 else {
@@ -18,5 +17,4 @@ else {
     $visibiliteAdmin = 'cache';
 }
 include(PARTIAL_PATH.'_header_menu.php');
-
 ?>

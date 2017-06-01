@@ -69,6 +69,7 @@ class Membre
     public function estAdmin()
     {
         return $this->status() == self::ADMIN ;
+
     }
 
     public function estAuteur()
